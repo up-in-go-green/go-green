@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="assets/img/earth.ico">
+    <title>Climate Change</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "Afacad Flux", sans-serif;
+        }
+
+        .background-video-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .background-video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            color: white;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+        ul{
+            font-size: large;
+        }
+        footer{
+            position: absolute;
+            bottom: 0%;
+            z-index: 1;
+            font-size: smaller;
+            color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-video-container">
+        <video autoplay muted loop>
+            <source src="assets/vid/cause.mp4" type="video/mp4">
+        </video>
+        <audio id="backgroundMusic" autoplay>
+            <source src="assets/audio/Pufino-Enlivening.mp3" type="audio/mpeg">
+            Your browser does not support HTML5 audio.
+        </audio>
+
+        <div class="content">
+            <h1>Can we Stop Climate Change?</h1>
+            <p>Yes, we can...</p>
+            <p>For taking action:</p>
+            <ul>
+                <li>Satellites are valuable tools we can use to increase our knowledge of climate processes and their impacts, <br>and thus properly target our action plans and response activities<br> 
+                Here are some sattelites used for observation: <br> 
+                RADARSAT Constellation Mission and RADARSAT-2, SCISAT, MOPITT (on Terra), OSIRIS (on Odin), CloudSat
+                </li>
+                <br>
+                <li>What do Sattelites help us with
+                    <ul>
+                        <li>Assess the state of the ozone layer in order to continue protecting it</li>
+                    <li>Monitor air quality and measure pollution</li>
+                    <li>Track changes in ice and permafrost conditions</li>
+                    <li>Monitor soil moisture on a global scale</li>
+                    </ul>
+                </li>
+                <br>
+                <li>Also at an individual level we can do so many things like reduce waste and use renewable energy</li>
+            </ul>
+        </div>
+        <footer>
+            Made by Roshni Rajak & Sana Riaz for NASA Space Apps Hackathon 2024
+        </footer>
+    </div>
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+        audio.volume = 0.5;
+    </script>
+</body>
+</html>

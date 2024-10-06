@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="assets/img/earth.ico">
+    <title>Climate Change</title>
+</head>
+
+<body>
+    <div class="entry-point">
+        <div class="clouds">
+            <img src="assets/img/cloud1.png" alt="Cloud 1" class="cloud" id="cloud1">
+            <img src="assets/img/cloud2.png" alt="Cloud 2" class="cloud" id="cloud2">
+            <img src="assets/img/cloud3.png" alt="Cloud 3" class="cloud" id="cloud3">
+            <img src="assets/img/cloud4.png" alt="Cloud 4" class="cloud" id="cloud4">
+            <img src="assets/img/cloud5.png" alt="Cloud 5" class="cloud" id="cloud5">
+            <img src="assets/img/cloud6.png" alt="Cloud 6" class="cloud" id="cloud6">
+        </div>
+        <h1 class="heading">Climate Change</h1>
+        <span class="click">Click to continue</span>
+    </div>
+    <script>
+        window.onload = function () {
+            setTimeout(function () {
+                const clouds = document.querySelectorAll('.cloud');
+                const heading = document.querySelector('.heading');
+                const click = document.querySelector('.click');
+
+                clouds.forEach((cloud, index) => {
+                    if (index < 3) {
+                        cloud.classList.add('reveal');
+                    } else {
+                        cloud.classList.add('reveal-right');
+                    }
+                });
+
+                setTimeout(() => {
+                    heading.style.opacity = '1';
+                }, 3000);
+
+                setTimeout(() => {
+                    click.style.opacity = '1';
+                    document.addEventListener('click', function () {
+                        window.location.href = 'causes.html';
+                    });
+                }, 8000);
+
+            }, 1000);
+        };
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="assets/img/earth.ico">
+    <title>Climate Change</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: "Afacad Flux", sans-serif;
+        }
+
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        #image {
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        #message {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: large;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            opacity: 1;
+            transition: opacity 0.5s;
+            z-index: 1;
+        }
+
+        #message ul {
+            font-size: 1.7rem;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('assets/img/black-mountain.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        #overlay-text p {
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px 40px 60px 40px;
+            height: 150px;
+            border-radius: 10px;
+            font-size: larger;
+        }
+
+        #overlay-text p .heading {
+            font-size: 2rem;
+        }
+
+        .affects {
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            padding: 0 50px;
+            opacity: 0;
+            background-color: #fff;
+            transition: opacity 2s ease;
+        }
+
+        .affects #affectsText {
+            position: absolute;
+            top: 20%
+        }
+
+        .affects span {
+            font-size: 1.7rem;
+        }
+
+        .affects ul {
+            font-size: 1.4rem;
+            z-index: 3
+        }
+
+        .affects img {
+            max-height: 400px;
+            width: auto;
+            transition: opacity 2s ease;
+        }
+
+        #continueButton {
+            position: absolute;
+            right: 10%;
+            z-index: 11;
+        }
+        button{
+            font-family: "Afacad Flux", sans-serif;
+            background: transparent;
+            padding:8px    
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <div id="message">
+        <h1> What is the cause of Climate Change</h1>
+        <h2>The cause is us.</h2>
+        <ul>
+            <li>Green House Gases <br>
+                - Greenhouse gases (GHGs) are gases in the Earth’s atmosphere that trap heat. <br>
+                - They allow sunlight to enter the atmosphere and warm the Earth’s surface, <br> but they prevent some
+                of the heat from escaping back into space. <br>
+                - This process is known as the greenhouse effect.
+            </li>
+            <li>Human Activities <br>
+                - Pyrogenic emissions from wildfires or burning of biofuels.<br>
+                - Methane(CH4) and Carbon dioxide (CO2) emissions by burning fossil fuels.<br>
+                - Disrupted concentration of methane levels in the atmosphere.<br>
+            </li>
+            <li>Pollution <br>
+                - Increased levels of carbon monoxide in the troposphere. <br>
+                - Increased level of CO2 in the sea.
+            </li>
+        </ul>
+        <p id="message-click">Click to continue</p>
+    </div>
+
+    <div class="affects">
+        <div id="affectsText">
+            <h1>Effects of Climate Change</h1>
+            <ul>
+                <li>Global Warming <br>
+                    - An increase in the global average surface temperature. <br>
+                    - Some areas of the world will warm more than the global average while others will warm less. <br>
+                    - Global warming is an indicator of climate change.</li>
+                <li>Depleting Ozone Layer <br>
+                    - The ozone layer protects people and life on Earth. <br>
+                    - Successfully protecting the ozone layer helps deliver many of the Sustainable Development Goals.
+                    <br>
+                    - But ozone is now depleting because of human-produced chlorofluorocarbons (CFCs).
+                </li>
+            </ul>
+            <button id="continueButton" style="display: none;">Click to continue</button>
+        </div>
+        <img id="image" src="assets/img/flood.jpg" style="opacity: 0;">
+    </div>
+
+    <div id="overlay">
+        <div id="overlay-text">
+            <p><span class="heading">What is Climate Change?</span> <br><br>
+                Climate change is a long-term shift in weather conditions identified by changes in temperature,
+                precipitation, winds, and other indicators. <br>Climate change can involve both changes in average
+                conditions and changes in variability, including, for example, extreme events.<br><br>
+                <span id="clickMessage"
+                    style="font-size: 18px; margin-top: 10px; opacity: 0; transition: opacity 0.5s ease-in;">
+                    Click to continue
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+        let scene, camera, renderer, earthModel, isOverlayClicked = false, isEarthClicked = false;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('container').appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(-10, 5, 5);
+            scene.add(directionalLight);
+
+            const loader = new THREE.GLTFLoader();
+            loader.load('assets/earth/scene.gltf', function (gltf) {
+                earthModel = gltf.scene;
+                scene.add(earthModel);
+
+                earthModel.scale.set(1, 1, 1);
+                earthModel.position.set(0, 0, 0);
+
+                animate();
+            });
+
+            camera.position.set(0, 0, 5);
+
+            setTimeout(() => {
+                const clickMessage = document.getElementById('clickMessage');
+                clickMessage.style.opacity = '1';
+            }, 4000);
+
+            window.addEventListener('click', handleOverlayClick);
+        }
+
+        function handleOverlayClick() {
+            if (!isOverlayClicked) {
+                isOverlayClicked = true;
+
+                const overlay = document.getElementById('overlay');
+                overlay.style.opacity = '0';
+
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 1000);
+
+                window.removeEventListener('click', handleOverlayClick);
+                window.addEventListener('click', morphToImage);
+            }
+        }
+
+        function morphToImage() {
+            if (isEarthClicked) return;
+            isEarthClicked = true;
+
+            const message = document.getElementById('message');
+            if (message) message.style.opacity = '0';
+
+            gsap.to(earthModel.rotation, { y: earthModel.rotation.y + Math.PI, duration: 3, ease: "power2.inOut" });
+            gsap.to(camera.position, {
+                z: 2, duration: 3, ease: "power2.inOut", onComplete: () => {
+                    gsap.to(earthModel.scale, {
+                        x: 0, y: 0, z: 0, duration: 1, onComplete: () => {
+                            scene.remove(earthModel);
+
+                            const affectsElement = document.querySelector('.affects');
+                            const image = document.getElementById('image');
+                            const affectsText = document.getElementById('affectsText');
+
+                            image.style.width = 'auto';
+                            image.style.height = '250px';
+                            image.style.top = '30%';
+                            image.style.right = '10%';
+                            image.style.transition = 'opacity 0.3s ease';
+
+                            affectsElement.style.opacity = '1';
+                            image.style.opacity = '1';
+                            affectsText.style.opacity = '1';
+                            startImageCycle();
+                        }
+                    });
+                }
+            });
+        }
+
+        function startImageCycle() {
+            const images = [
+                'assets/img/drought.jpg',
+                'assets/img/glacier.jpg',
+                'assets/img/flood.jpg'
+            ];
+            let currentImageIndex = 0;
+            const imageElement = document.getElementById('image');
+
+            function cycleImages() {
+                gsap.to(imageElement, {
+                    opacity: 0, duration: 0.4, onComplete: () => {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        imageElement.src = images[currentImageIndex];
+
+                        imageElement.style.width = 'auto';
+                        imageElement.style.height = '250px';
+                        imageElement.style.top = '30%';
+                        imageElement.style.right = '10%';
+
+                        imageElement.onload = () => {
+                            gsap.to(imageElement, { opacity: 1 });
+                        };
+                        setTimeout(cycleImages, 3000);
+                    }
+                });
+            }
+
+            imageElement.src = images[currentImageIndex];
+            gsap.to(imageElement, { opacity: 1, duration: 1 });
+
+            setTimeout(cycleImages, 3000);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (earthModel) {
+                earthModel.rotation.y += 0.01;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        function showContinueButton() {
+            const continueButton = document.getElementById('continueButton');
+            setTimeout(() => {
+                continueButton.style.display = 'block';
+            }, 3500);
+
+            continueButton.addEventListener('click', () => {
+                window.location.href = "prevent.html";
+            });
+        }
+
+        window.addEventListener('resize', function () {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+
+        init();
+        showContinueButton();
+    </script>
+</body>
+
+
+</html>
